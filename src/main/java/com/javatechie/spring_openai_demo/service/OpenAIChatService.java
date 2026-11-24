@@ -11,34 +11,17 @@ import java.util.List;
 public class OpenAIChatService {
     private final ChatClient chatClient;
 
-    public OpenAIChatService(ChatClient.Builder chatClient) {
-        this.chatClient = chatClient.build();
+    public OpenAIChatService(ChatClient chatClient) {
+        this.chatClient = chatClient;
     }
 
-    public String chatWithOpenAI(String message) {
-        ChatOptions chatOptions = ChatOptions.builder()
-                .model("gpt-4o-mini")
-                .temperature(0.3)
-                .maxTokens(400)
-                .frequencyPenalty(0.7)
-                .presencePenalty(0.7)
-                .stopSequences(List.of("}"))
-                .topK(50)
-                .topP(0.5)
-                .build();
+    public String askToAI(String message) {
         return chatClient
                 .prompt(message)
-                .options(chatOptions.mutate())
                 .call()
                 .content();
     }
 
-    public Flux<String> askToAIStream(String message) {
-        return chatClient
-                .prompt(message)
-                .stream()
-                .content();
-    }
 
 
 }
