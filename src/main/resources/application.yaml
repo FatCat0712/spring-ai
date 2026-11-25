@@ -5,6 +5,11 @@ spring:
   ai:
     openai:
       api-key: ${OPENAI_API_KEY}
+    chat:
+      memory:
+        repository:
+          jdbc:
+            initialize-schema: ALWAYS
 #      chat:
 #        options:
 #            model: gpt-4o-mini
@@ -20,6 +25,11 @@ spring:
 #    chat:
 #      client:
 #        enabled: false
+  datasource:
+    url: jdbc:postgresql://localhost:5432/mydb
+    username: admin
+    password: Fatcat@712
+    driver-class-name: org.postgresql.Driver
 logging:
   level:
     org:
