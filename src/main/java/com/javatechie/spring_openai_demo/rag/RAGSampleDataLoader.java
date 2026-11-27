@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@Component
+//@Component
 public class RAGSampleDataLoader {
     private final VectorStore vectorStore;
 
@@ -15,7 +15,7 @@ public class RAGSampleDataLoader {
         this.vectorStore = vectorStore;
     }
 
-    @PostConstruct
+//    @PostConstruct
     public void loadSampleDataToVectorStore() {
         List<String> sampleData = getSampleData();
         // chunks -> embedding -> vector store
